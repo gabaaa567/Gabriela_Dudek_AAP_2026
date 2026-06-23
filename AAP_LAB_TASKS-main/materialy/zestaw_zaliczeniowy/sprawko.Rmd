@@ -1,0 +1,34 @@
+---
+title: "zestaw_zaliczeniowy"
+author: "Dudek_Gabriela"
+date: "2026-06-21"
+output: pdf_document
+---
+
+## ZESTAW ZALICZENIOWY - KRÓTKIE SPRAWOZDANIE
+
+### ZADANIE 1
+W zadaniu zaimplementowano dekoratory retry oraz cache_to_disk. Dekorator retry zwiększył niezawodność działania funkcji poprzez ponawianie nieudanych wywołań, natomiast cache_to_disk umożliwił zapis wyników na dysku i ich ponowne wykorzystanie bez wykonywania funkcji. W eksperymencie uzyskano 99 sukcesów na 100 wywołań, co jest wynikiem zgodnym z teoretycznym prawdopodobieństwem sukcesu wynoszącym 96,875%.
+
+
+
+### ZADANIE 2 
+W zadaniu porównano trzy sposoby liczenia prostego wyniku sentymentu dla 5000 recenzji: sekwencyjny, ThreadPool oraz multiprocessing. Najszybsze okazało się wykonanie sekwencyjne, które trwało około 0,57 s, a multiprocessing uzyskał bardzo zbliżony wynik około 0,57 s. ThreadPool był wolniejszy i trwał około 0,86 s, ponieważ zadanie miało charakter CPU-bound, a wątki w Pythonie są ograniczane przez GIL. W tym przypadku multiprocessing nie dał dużego przyspieszenia, ponieważ sama funkcja była bardzo prosta, więc narzut tworzenia procesów i przekazywania danych był podobny do zysku z równoległości.
+
+
+### ZADANIE 3
+W zadaniu zaimplementowano klasę `Tokenizer` oraz przygotowano testy jednostkowe w `pytest` z użyciem fixtures i parametryzacji. Testy sprawdzały przypadki brzegowe, m.in. pusty tekst, sam HTML, mieszane wielkości liter, interpunkcję oraz polskie znaki diakrytyczne. Wynik testów to 9 testów zakończonych sukcesem oraz 1 test oznaczony jako `xfail`, który celowo dotyczył nieobsługiwanej funkcjonalności. Oznacza to, że implementacja spełnia założenia zadania, a test `xfail` nie jest błędem, tylko świadomie oznaczonym przypadkiem oczekiwanego niepowodzenia.
+
+
+
+### ZADANIE 4
+W zadaniu utworzono alternatywny schemat NoSQL-style, w którym recenzje zapisano jako dokumenty JSON w jednej kolumnie. Dla 2000 próbek rozkład klas był równy: 1000 recenzji negatywnych i 1000 pozytywnych, a średnia liczba słów wyniosła około 224,7 dla klasy negatywnej i 232,2 dla pozytywnej. Schemat JSON zajął więcej miejsca niż klasyczny SQL, ponieważ baza JSON miała 3 518 464 bajtów, a klasyczna baza SQL 3 215 360 bajtów. Dla tego problemu lepszy jest klasyczny SQL, ponieważ dane mają stałą strukturę, a zapytania analityczne po klasie i liczbie słów są prostsze i bardziej czytelne niż używanie `json_extract`.
+
+
+
+### ZADANIE 5
+Z azadania 5 niestety musialam zrezygnować ze względów technicznych - problem ze Sparkiem w notebooku albo Javą, sama nie wiem co dokładnie. Próbowałam naprawić, ale mi się nie udało.
+
+
+### ZADANIE 6
+W zadaniu zaimplementowano prosty mechanizm walidacji jakości danych oparty o kontrakt danych i zestaw reguł. Reguły o poziomie error sprawdzały m.in. braki danych, poprawność etykiet, długość recenzji, duplikaty oraz balans klas. Dodatkowo dodano regułę no_html_tags jako warning, dzięki czemu informacja o tagach HTML pojawia się w raporcie, ale nie przerywa walidacji.

@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-06-23T21:44:14.694163",
+  "contract_name": "imdb_data_contract",
+  "rows": 2000,
+  "rules": {
+    "no_nulls": {
+      "passed": true,
+      "severity": "error",
+      "details": "Sprawdzono brak NULL w kolumnach text i label"
+    },
+    "labels_in_set": {
+      "passed": true,
+      "severity": "error",
+      "details": "Unikalne labele: [0, 1]"
+    },
+    "min_word_count": {
+      "passed": true,
+      "severity": "error",
+      "details": "Najkrotsza recenzja ma 12 slow"
+    },
+    "max_word_count": {
+      "passed": true,
+      "severity": "error",
+      "details": "Najdluzsza recenzja ma 1005 slow"
+    },
+    "no_duplicates": {
+      "passed": true,
+      "severity": "error",
+      "details": "Liczba duplikatow: 0"
+    },
+    "class_balance": {
+      "passed": true,
+      "severity": "error",
+      "details": "Klasa 0: 1000, klasa 1: 1000, ratio=1.00"
+    },
+    "no_html_tags": {
+      "passed": false,
+      "severity": "warning",
+      "details": "Sprawdzono, czy teksty zawieraja tagi HTML"
+    }
+  }
+}
